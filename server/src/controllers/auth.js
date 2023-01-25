@@ -74,3 +74,26 @@ export const login = async (req, res) => {
 
 
 
+
+// Get Me
+export const getMe = async (req, res) => {
+    try {
+        const user = await User.findById(req.userId)
+
+        if (!user) {
+            return res.json({
+                message: 'User exists',
+            })
+        }
+        const token = createToken({id:user._id})
+
+        res.json({
+            user,
+            token,
+        })
+    } catch (error) {
+        console.log(error);
+        res.json({ message: `No Access ${error}` })
+    }
+}
+
