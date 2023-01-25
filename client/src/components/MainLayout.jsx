@@ -1,6 +1,7 @@
-import React from 'react'
-import { Navbar } from './Navbar'
+import React,{useEffect} from 'react'
+
 import { Outlet, useLocation } from "react-router-dom";
+import Navbar from './Navbar';
 
  const MainLayout = () => {
 

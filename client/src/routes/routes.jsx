@@ -1,6 +1,5 @@
 
-import { ProtectedPage } from "../components";
-import { AddPostP, EditPostP, LoginP, RegisterP } from "../pages";
+import { AddPostP, EditPostP, LoginP,PostP, RegisterP,Home } from "../pages";
 
 
 export const routesGen = {
