@@ -1,12 +1,13 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { PopularPosts } from '../components/PopularPosts'
-import { PostItem } from '../components/PostItem'
 import { getAllPosts } from '../redux/features/post/postSlice'
+import { PopularPosts, PostItem,  } from '../components'
+
 const Home = () => {
     const dispatch = useDispatch()
     const { posts, popularPosts } = useSelector((state) => state.post)
+    console.log(posts)
 
     console.log(popularPosts)
 
