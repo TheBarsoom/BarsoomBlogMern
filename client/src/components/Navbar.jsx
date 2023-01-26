@@ -19,9 +19,9 @@ export const Navbar = () => {
     }
     return (
         <div className='flex py-4 justify-between items-center'>
-            <span className='flex rounded-lg justify-center items-center w-6 h-6 bg-orange-600 text-xs text-white rounded-sm hover:scale-125' >
+            <NavLink    to={'/'} className='flex rounded-2xl justify-center items-center w-6 h-6 bg-orange-600 text-xs text-white  hover:scale-125' >
                 Barsoom
-            </span>
+            </NavLink>
 
             {isAuth && (
                 <ul className='flex gap-8'>
@@ -64,11 +64,15 @@ export const Navbar = () => {
                 </ul>
             )}
 
-            <div className='flex justify-center items-center bg-gray-600 text-xs text-white rounded-sm px-4 py-2'>
+            <div className='flex justify-center items-center text-white rounded-sm px-4 py-2'>
                 {isAuth ? (
-                     <button onClick={logoutHandler}>Logout</button>
+                     <button className='bg-gray-600 text-xs p-2 rounded-md' onClick={logoutHandler}>Logout</button>
                 ) : (
-                    <Link to={'/login'}> Login </Link>
+                  <div className='flex justify-center items-center gap-5'>
+                      <Link to={'/login'} className=' bg-gray-600 text-xs p-2 rounded-md'> Login </Link>
+                    <Link to={'/register'} className=' bg-gray-600 text-xs p-2 rounded-md'> Register </Link>
+                  </div>
+                    
                 )}
             </div>
         </div>

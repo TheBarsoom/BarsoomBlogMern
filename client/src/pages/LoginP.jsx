@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { checkIsAuth, loginUser } from '../redux/features/auth/authSlice'
 import { toast } from 'react-toastify'
 
-export const LoginPage = () => {
+ const LoginP = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
@@ -71,3 +71,6 @@ export const LoginPage = () => {
         </form>
     )
 }
+
+
+export default LoginP

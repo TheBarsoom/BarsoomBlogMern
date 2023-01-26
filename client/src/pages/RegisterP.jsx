@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { registerUser, checkIsAuth } from '../redux/features/auth/authSlice'
 import { toast } from 'react-toastify'
 
-export const RegisterPage = () => {
+export const RegisterP = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const { status } = useSelector((state) => state.auth)
@@ -76,3 +76,5 @@ export const RegisterPage = () => {
         </form>
     )
 }
+
+export default RegisterP

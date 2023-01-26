@@ -1,30 +1,34 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "../../../utils/axios"
-const initialState={
-    user:null,
-    token:null,
-    isLoading:false,
-    status:null,
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import axios from '../../../utils/axios'
+
+const initialState = {
+    user: null,
+    token: null,
+    isLoading: false,
+    status: null,
 }
 
 export const registerUser = createAsyncThunk(
-    'auth/registerUser', async({username,password})=>{
+    'auth/registerUser',
+    async ({ username, password }) => {
         try {
-            const {data} = await axios.post("/auth/register",{
-                username,password
+            const { data } = await axios.post('/auth/register', {
+                username,
+                password,
             })
             if (data.token) {
                 window.localStorage.setItem('token', data.token)
             }
             return data
         } catch (error) {
-            console.log(`Error registerUser ${error}`);
+            console.log(error)
         }
-    }
+    },
 )
 
 export const loginUser = createAsyncThunk(
-    'auth/loginUser', async()=>{
+    'auth/loginUser',
+    async ({ username, password }) => {
         try {
             const { data } = await axios.post('/auth/login', {
                 username,
@@ -34,34 +38,31 @@ export const loginUser = createAsyncThunk(
                 window.localStorage.setItem('token', data.token)
             }
             return data
-            
         } catch (error) {
-            console.log(`Error loginUser ${error}`);
+            console.log(error)
         }
-    }
-)
-export const getMe = createAsyncThunk(
-    'auth/getMe', async()=>{
-        try {
-            const { data } = await axios.get('/auth/me')
-            return data
-        } catch (error) {
-            console.log(`Error getMe ${error}`);
-        }
-    }
+    },
 )
 
+export const getMe = createAsyncThunk('auth/loginUser', async () => {
+    try {
+        const { data } = await axios.get('/auth/me')
+        return data
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 export const authSlice = createSlice({
-    name:"auth",
+    name: 'auth',
     initialState,
-    reducers:{
+    reducers: {
         logout: (state) => {
             state.user = null
             state.token = null
             state.isLoading = false
             state.status = null
         },
-
     },
     extraReducers: {
         // Register user
@@ -111,6 +112,7 @@ export const authSlice = createSlice({
         },
     },
 })
+
 export const checkIsAuth = (state) => Boolean(state.auth.token)
 
 export const { logout } = authSlice.actions
