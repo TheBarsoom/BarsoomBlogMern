@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { createPost } from '../redux/features/post/postSlice'
 
-export const AddPostPage = () => {
+ const AddPostP = () => {
     const [title, setTitle] = useState('')
     const [text, setText] = useState('')
     const [image, setImage] = useState('')
@@ -12,6 +12,7 @@ export const AddPostPage = () => {
     const navigate = useNavigate()
 
     const submitHandler = () => {
+        // e.preventDefault()
         try {
             const data = new FormData()
             data.append('title', title)
@@ -70,6 +71,7 @@ export const AddPostPage = () => {
 
             <div className='flex gap-8 items-center justify-center mt-4'>
                 <button
+                  type='button'
                     onClick={submitHandler}
                     className='flex justify-center items-center bg-gray-600 text-xs text-white rounded-sm py-2 px-4'
                 >
@@ -86,3 +88,5 @@ export const AddPostPage = () => {
         </form>
     )
 }
+
+export default AddPostP
